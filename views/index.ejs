@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Courses</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- FONT
+	–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+	<link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
+
+	<!-- CSS
+	–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+	<link rel="stylesheet" href="css/skeleton.css">
+	<link rel="stylesheet" href="jqueryFileTree.min.css">
+	<link rel="stylesheet" href="css/jqft-test.css">
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/atelier-cave.light.min.css">
+
+  </head>
+
+    <script type="text/javascript">
+        function getCourse() {
+            // alert($('#merchant_id').val())
+            var url = window.location.origin.split("/")[3] ? window.location.origin : window.location.origin +  '/getallcourse';
+            $.ajax({
+                url: url,
+                method: 'get',
+                success: function (data) {
+                    console.log(data)
+                    if(data.length > 0) {
+
+                    	for (var i = 0; i < data.length; i++) {
+                    		console.log(data[i])
+                    		$('#course-list').append('<li><a ><span class="tab">'+data[i]+'</span></a></li>')
+                    		;
+                    	}
+                        
+                    }
+                },
+                dataType: 'JSON',
+            });
+        }
+        getCourse()
+        function chnageCourse() {
+            // alert($('#merchant_id').val())
+            var url = window.location.origin.split("/")[3] ? window.location.origin : window.location.origin +  '/getallcourse';
+            $.ajax({
+                url: url,
+                method: 'get',
+                success: function (data) {
+                    console.log(data)
+                    if(data.length > 0) {
+
+                    	for (var i = 0; i < data.length; i++) {
+                    		console.log(data[i])
+                    		$('#course-list').append('<li><a ><span class="tab">'+data[i]+'</span></a></li>')
+                    		;
+                    	}
+                        
+                    }
+                },
+                dataType: 'JSON',
+            });
+        }
+
+        $('#divVideo video source').attr('src', videoFile);
+         $("#divVideo video")[0].load();
+    </script>
+
+
+  <body>
+    <h1><%= title %></h1>
+   <div class="container">
+   	<div class="col-md-3" >
+   		<ul id="course-list">
+   			
+   		</ul>
+   	</div>
+   	<div class="col-md-9"><video id="videoPlayer" style='height: 240pt; float: right'controls>
+  <source src="http://localhost:3000/users/video" type="video/mp4">
+</video></div>
+   </div> 
+
+  </body>
+</html>
